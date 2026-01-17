@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width">
+            <title></title>
+
+        <!--put your external stylesheet links here-->
+        <link rel="stylesheet" href="lib/leaflet/leaflet.css">
+        <link rel="stylesheet" href="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.css" />
+        <link rel="stylesheet" href="css/style.css">
+        <!--[if IE<9]>
+            <link rel="stylesheet" href="css/style.ie.css">
+        <![endif]-->
+
+         <!--you can also place internal styles here;
+             place these within <style> tags-->
+        
+    </head>
+
+    <body>
+        <div id="container">
+            <h1>Simple Geocoder</h1>
+            <hr>
+            <div id="about">
+                <p>This simple geocoder allows you to geocode up to 100 features, using the <a href="https://nominatim.org/">Nominatim</a> server.</p>
+            </div>
+            <div id="input">
+                <p>Copy your list of features into the box below:</p>
+                <textarea id="list"></textarea>
+                <p id="error"></p>
+                <button id="geocode">Geocode</button>
+            </div>
+            <div id="map"></div>
+            <div id="output">
+                <p>Results:</p>
+                <textarea id="result"></textarea>
+            </div>
+            <hr>
+            <div id="footer">
+                <p>Created for the UW Cart Lab, using <a href="https://leafletjs.com/">Leaflet</a> and the <a href="https://www.liedman.net/leaflet-control-geocoder/docs/index.html">Leaflet Control Geocoder</a>. 2025</p>
+            </div>
+        </div>
+
+        <!--put your initial page content here-->
+
+        <!--you can also use this space for internal scripts;
+        place these within <script> tags-->
+
+        <!--put your external script links here-->
+        <script type="text/javascript" src="lib/leaflet/leaflet.js"></script>
+        <script src="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.js"></script>
+        <script type="text/javascript" src="js/main.js"></script>
+    </body>
+</html>
