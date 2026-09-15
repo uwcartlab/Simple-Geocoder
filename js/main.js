@@ -18,7 +18,7 @@
         //reset results box
         document.querySelector("#result").value = "";
         //activate function if less than 100 features
-        if (text.length < 100){
+        if (text.length < 2500){
             //reset error
             document.querySelector("#error").innerHTML = ""
             //add loading spinner
@@ -63,7 +63,7 @@
         }
         else{
             //if list of features exceeds 100, post error message
-            document.querySelector("#error").innerHTML = "Error: your query exceeds 100 features"
+            document.querySelector("#error").innerHTML = "Error: your query exceeds 2500 features"
         }
         
     })
