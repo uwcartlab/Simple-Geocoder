@@ -29,8 +29,9 @@
                 //geocode item
                 await nominatim.geocode(x)
                     .then(function(data){
+                        console.log(data)
                         //add item to results if result exists
-                        if (data[0]){
+                        if (data.length > 1){
                             //set delay for 1 second to comply with public server limits
                             setTimeout(() => {
                                 //set coordinates based on results
@@ -38,18 +39,33 @@
                                 //add marker to map
                                 L.marker(coords).addTo(map)
                                 //add result to list
-                                document.querySelector("#result").value += x + ", " + coords.lat + ", " + coords.lng + "\n";
+                                document.querySelector("#result").value += x + ", " + coords.lat + ", " + coords.lng + ", uncertain\n";
                                 //increase index value and compare to list legnth
                                 index++;
                                 //remove loading spinner if index equals list length
                                 if (index == text.length)
                                     document.querySelector(".loader").remove()
-                                
+                            }, 1000);
+                        }
+                        else if (data[0]){
+                            //set delay for 1 second to comply with public server limits
+                            setTimeout(() => {
+                                //set coordinates based on results
+                                let coords = data[0].center
+                                //add marker to map
+                                L.marker(coords).addTo(map)
+                                //add result to list
+                                document.querySelector("#result").value += x + ", " + coords.lat + ", " + coords.lng + ", verified\n";
+                                //increase index value and compare to list legnth
+                                index++;
+                                //remove loading spinner if index equals list length
+                                if (index == text.length)
+                                    document.querySelector(".loader").remove()
                             }, 1000);
                         }
                         else{
                             //if no result, post feature name with undefined values
-                            document.querySelector("#result").value += x + ", Undefined, Undefined \n"
+                            document.querySelector("#result").value += x + ", undefined, undefined, error \n"
                             index++;
                             if (index == text.length)
                                 document.querySelector(".loader").remove()
@@ -57,7 +73,7 @@
                     })
                     .catch(function(){
                         //if no result, post feature name with undefined values
-                        document.querySelector("#result").value += x + ", Undefined, Undefined \n"
+                        document.querySelector("#result").value += x + ", undefined, undefined, error \n"
                     })
             }
         }
